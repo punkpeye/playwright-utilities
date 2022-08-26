@@ -48,6 +48,7 @@ jobs:
           node-version: "18"
           cache: "npm"
       - run: npm ci
+      - run: npx playwright install
       - run: npm run test
     timeout-minutes: 10
 on:
