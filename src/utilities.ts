@@ -1,1 +1,1 @@
-export {createDataTransfer} from './createDataTransfer';
+export { createDataTransfer } from "./createDataTransfer";
