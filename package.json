@@ -17,7 +17,7 @@
     "test": "playwright test",
     "start": "tsx server.ts",
     "build": "rm -fr ./dist && tsc",
-    "lint": "prettier --check && tsc --noEmit"
+    "lint": "prettier --check . && tsc --noEmit"
   },
   "devDependencies": {
     "@fastify/static": "^6.5.0",
