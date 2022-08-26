@@ -2,6 +2,8 @@ dist
 node_modules
 playwright-report
 .*
+!.eslintignore
+!.eslintrc
 !.github
 !.gitignore
 !.prettierignore

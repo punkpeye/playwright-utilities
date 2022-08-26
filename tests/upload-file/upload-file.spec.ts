@@ -1,6 +1,5 @@
 import { resolve } from "node:path";
 import { expect, test } from "@playwright/test";
-import { readFile } from "node:fs/promises";
 import { createDataTransfer } from "../../src/createDataTransfer";
 
 test("upload file using drop event", async ({ page }) => {
