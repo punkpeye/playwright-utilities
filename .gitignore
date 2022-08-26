@@ -1,0 +1,7 @@
+dist
+node_modules
+playwright-report
+.*
+!.github
+!.gitignore
+!.releaserc

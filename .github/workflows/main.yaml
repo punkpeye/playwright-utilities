@@ -1,0 +1,62 @@
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    environment: release
+    name: Lint
+    steps:
+      - name: setup repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run lint
+    timeout-minutes: 10
+  test:
+    runs-on: ubuntu-latest
+    environment: release
+    name: Test
+    steps:
+      - name: setup repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run test
+    timeout-minutes: 10
+  release:
+    needs:
+      - lint
+      - test
+    runs-on: ubuntu-latest
+    environment: release
+    name: Release
+    steps:
+      - name: setup repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: setup node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+          cache: "npm"
+      - run: npm ci
+      - run: npm run build
+      - run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+on:
+  push:
+    branches:
+      - main
