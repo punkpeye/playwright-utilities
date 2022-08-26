@@ -19,6 +19,10 @@
     "build": "rm -fr ./dist && tsc",
     "lint": "eslint . && prettier --check . && tsc --noEmit"
   },
+  "files": [
+    "dist",
+    "LICENSE"
+  ],
   "devDependencies": {
     "@fastify/static": "^6.5.0",
     "@playwright/test": "^1.25.1",
